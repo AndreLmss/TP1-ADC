@@ -17,7 +17,7 @@ loja de periféricos para PC.
 
 ## Equipa
 - André Luiz  a91349 (GitHub: @AndreLmss)
-- Nome colega 2 (GitHub: @username2)
+- Davy Silva a91341 (GitHub: @a91341)
 - Nome colega 3 (GitHub: @username3)
 
 ## Tecnologias
