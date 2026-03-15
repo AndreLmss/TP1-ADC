@@ -16,7 +16,7 @@ loja de periféricos para PC.
 - Sistema de login com papéis
 
 ## Equipa
-- André (GitHub: @AndreLmss)
+- André Luiz  a91349 (GitHub: @AndreLmss)
 - Nome colega 2 (GitHub: @username2)
 - Nome colega 3 (GitHub: @username3)
 
