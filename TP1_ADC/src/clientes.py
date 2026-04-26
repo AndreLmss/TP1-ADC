@@ -81,3 +81,9 @@ def listar_clientes_ordenados():
         print(
             f"[{c['id']}] {c['nome']} | {c['email']} | {c['telefone']}"
         )
+
+def total_clientes():
+    clientes = carregar_clientes()
+
+    print("\n=== TOTAL DE CLIENTES ===")
+    print(f"Total de clientes cadastrados: {len(clientes)}")
