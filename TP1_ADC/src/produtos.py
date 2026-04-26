@@ -81,3 +81,47 @@ def remover_produto():
         print("Produto removido com sucesso!")
     except:
         print("ID inválido!")
+
+def produtos_stock_baixo():
+    produtos = carregar_produtos()
+
+    print("\n=== PRODUTOS COM STOCK BAIXO ===")
+
+    encontrados = False
+
+    for p in produtos:
+        if p["stock"] <= 5:
+            print(
+                f"[{p['id']}] {p['nome']} | Stock: {p['stock']}"
+            )
+            encontrados = True
+
+    if not encontrados:
+        print("Nenhum produto com stock baixo.")
+
+def pesquisar_por_preco():
+    produtos = carregar_produtos()
+
+    print("\n=== PESQUISAR POR PREÇO ===")
+
+    try:
+        minimo = float(input("Preço mínimo: "))
+        maximo = float(input("Preço máximo: "))
+
+        encontrados = []
+
+        for p in produtos:
+            if minimo <= p["preco"] <= maximo:
+                encontrados.append(p)
+
+        if not encontrados:
+            print("Nenhum produto encontrado.")
+            return
+
+        for p in encontrados:
+            print(
+                f"[{p['id']}] {p['nome']} | {p['categoria']} | {p['preco']}€"
+            )
+
+    except:
+        print("Valor inválido!")

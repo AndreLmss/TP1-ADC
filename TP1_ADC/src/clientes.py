@@ -65,3 +65,25 @@ def remover_cliente():
         print("Cliente removido com sucesso!")
     except:
         print("ID inválido!")
+
+def listar_clientes_ordenados():
+    clientes = carregar_clientes()
+
+    print("\n=== CLIENTES ORDENADOS ===")
+
+    if not clientes:
+        print("Nenhum cliente encontrado!")
+        return
+
+    clientes.sort(key=lambda c: c["nome"].lower())
+
+    for c in clientes:
+        print(
+            f"[{c['id']}] {c['nome']} | {c['email']} | {c['telefone']}"
+        )
+
+def total_clientes():
+    clientes = carregar_clientes()
+
+    print("\n=== TOTAL DE CLIENTES ===")
+    print(f"Total de clientes cadastrados: {len(clientes)}")
