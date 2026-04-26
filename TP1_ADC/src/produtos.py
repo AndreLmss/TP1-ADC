@@ -98,3 +98,30 @@ def produtos_stock_baixo():
 
     if not encontrados:
         print("Nenhum produto com stock baixo.")
+
+def pesquisar_por_preco():
+    produtos = carregar_produtos()
+
+    print("\n=== PESQUISAR POR PREÇO ===")
+
+    try:
+        minimo = float(input("Preço mínimo: "))
+        maximo = float(input("Preço máximo: "))
+
+        encontrados = []
+
+        for p in produtos:
+            if minimo <= p["preco"] <= maximo:
+                encontrados.append(p)
+
+        if not encontrados:
+            print("Nenhum produto encontrado.")
+            return
+
+        for p in encontrados:
+            print(
+                f"[{p['id']}] {p['nome']} | {p['categoria']} | {p['preco']}€"
+            )
+
+    except:
+        print("Valor inválido!")
