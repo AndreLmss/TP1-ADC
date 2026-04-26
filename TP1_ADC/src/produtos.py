@@ -81,3 +81,20 @@ def remover_produto():
         print("Produto removido com sucesso!")
     except:
         print("ID inválido!")
+
+def produtos_stock_baixo():
+    produtos = carregar_produtos()
+
+    print("\n=== PRODUTOS COM STOCK BAIXO ===")
+
+    encontrados = False
+
+    for p in produtos:
+        if p["stock"] <= 5:
+            print(
+                f"[{p['id']}] {p['nome']} | Stock: {p['stock']}"
+            )
+            encontrados = True
+
+    if not encontrados:
+        print("Nenhum produto com stock baixo.")
