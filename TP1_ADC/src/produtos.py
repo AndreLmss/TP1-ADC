@@ -4,16 +4,27 @@ import os
 FICHEIRO = "data/produtos.json"
 
 def carregar_produtos():
+    """
+    Carrega a lista de produtos a partir do ficheiro JSON.
+    Se o ficheiro não for encontrado, retorna uma lista vazia.
+    """
     if not os.path.exists(FICHEIRO):
         return []
     with open(FICHEIRO, "r") as f:
         return json.load(f)
 
 def guardar_produtos(produtos):
+    """
+    Guarda os produtos no ficheiro JSON para persistência de dados.
+    """
     with open(FICHEIRO, "w") as f:
         json.dump(produtos, f, indent=4)
 
 def cadastrar_produto():
+    """
+    Regista um novo produto no sistema solicitando os detalhes ao utilizador.
+    Os campos incluem nome, categoria, preço e stock inicial.
+    """
     produtos = carregar_produtos()
     print("\n=== CADASTRAR PRODUTO ===")
     nome = input("Nome: ")
@@ -32,6 +43,9 @@ def cadastrar_produto():
     print("Produto cadastrado com sucesso!")
 
 def listar_produtos():
+    """
+    Exibe uma lista de todos os produtos cadastrados com as respetivas informações.
+    """
     produtos = carregar_produtos()
     print("\n=== LISTA DE PRODUTOS ===")
     if not produtos:
@@ -41,6 +55,9 @@ def listar_produtos():
         print(f"[{p['id']}] {p['nome']} | {p['categoria']} | {p['preco']}€ | Stock: {p['stock']}")
 
 def pesquisar_produto():
+    """
+    Permite pesquisar produtos pelo nome ou categoria (case insensitive).
+    """
     produtos = carregar_produtos()
     print("\n=== PESQUISAR PRODUTO ===")
     termo = input("Nome ou categoria: ").lower()
@@ -52,6 +69,10 @@ def pesquisar_produto():
         print(f"[{p['id']}] {p['nome']} | {p['categoria']} | {p['preco']}€ | Stock: {p['stock']}")
 
 def editar_produto():
+    """
+    Atualiza as informações de um produto existente com base no seu ID.
+    O utilizador pode omitir os campos que não deseja alterar.
+    """
     produtos = carregar_produtos()
     listar_produtos()
     try:
@@ -72,6 +93,9 @@ def editar_produto():
         print("ID inválido!")
 
 def remover_produto():
+    """
+    Elimina um produto do registo utilizando o seu ID.
+    """
     produtos = carregar_produtos()
     listar_produtos()
     try:
@@ -83,6 +107,9 @@ def remover_produto():
         print("ID inválido!")
 
 def produtos_stock_baixo():
+    """
+    Apresenta uma lista de produtos que têm um stock igual ou inferior a 5 unidades.
+    """
     produtos = carregar_produtos()
 
     print("\n=== PRODUTOS COM STOCK BAIXO ===")
@@ -100,6 +127,9 @@ def produtos_stock_baixo():
         print("Nenhum produto com stock baixo.")
 
 def pesquisar_por_preco():
+    """
+    Filtra e apresenta os produtos que se encontram dentro de um intervalo de preços definido.
+    """
     produtos = carregar_produtos()
 
     print("\n=== PESQUISAR POR PREÇO ===")

@@ -4,16 +4,27 @@ import os
 FICHEIRO = "data/clientes.json"
 
 def carregar_clientes():
+    """
+    Carrega os clientes a partir do ficheiro JSON correspondente.
+    Retorna uma lista vazia se o ficheiro não existir.
+    """
     if not os.path.exists(FICHEIRO):
         return []
     with open(FICHEIRO, "r") as f:
         return json.load(f)
 
 def guardar_clientes(clientes):
+    """
+    Guarda a lista de clientes no ficheiro JSON de dados.
+    """
     with open(FICHEIRO, "w") as f:
         json.dump(clientes, f, indent=4)
 
 def cadastrar_cliente():
+    """
+    Regista um novo cliente no sistema.
+    Pede ao utilizador os dados do cliente e guarda-os.
+    """
     clientes = carregar_clientes()
     print("\n=== CADASTRAR CLIENTE ===")
     nome = input("Nome: ")
@@ -30,6 +41,9 @@ def cadastrar_cliente():
     print("Cliente cadastrado com sucesso!")
 
 def listar_clientes():
+    """
+    Imprime no ecrã a lista de todos os clientes registados no sistema.
+    """
     clientes = carregar_clientes()
     print("\n=== LISTA DE CLIENTES ===")
     if not clientes:
@@ -39,6 +53,10 @@ def listar_clientes():
         print(f"[{c['id']}] {c['nome']} | {c['email']} | {c['telefone']}")
 
 def editar_cliente():
+    """
+    Permite editar os dados de um cliente existente com base no seu ID.
+    O utilizador pode deixar em branco para manter o valor atual.
+    """
     clientes = carregar_clientes()
     listar_clientes()
     try:
@@ -56,6 +74,9 @@ def editar_cliente():
         print("ID inválido!")
 
 def remover_cliente():
+    """
+    Remove um cliente do sistema com base no ID fornecido pelo utilizador.
+    """
     clientes = carregar_clientes()
     listar_clientes()
     try:
@@ -67,6 +88,9 @@ def remover_cliente():
         print("ID inválido!")
 
 def listar_clientes_ordenados():
+    """
+    Apresenta a lista de clientes ordenada alfabeticamente pelo nome.
+    """
     clientes = carregar_clientes()
 
     print("\n=== CLIENTES ORDENADOS ===")
@@ -83,6 +107,9 @@ def listar_clientes_ordenados():
         )
 
 def total_clientes():
+    """
+    Calcula e exibe o número total de clientes atualmente registados no sistema.
+    """
     clientes = carregar_clientes()
 
     print("\n=== TOTAL DE CLIENTES ===")

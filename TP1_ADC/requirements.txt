@@ -1,0 +1,5 @@
+# Nenhuma dependência externa é necessária para o funcionamento da aplicação CLI
+# (A aplicação utiliza apenas pacotes padrão do Python: json, os)
+
+# No entanto, para o website Docusaurus o ambiente de node/npm será necessário 
+# conforme os comandos gerados no package.json dentro da pasta "website".
